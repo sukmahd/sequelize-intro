@@ -1,12 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <h2>Edit Student Data</h2>
+    <form action="/students/edit/<%= data.id%>" method="post">
+      <input type="text" name='first_name' value="<%= data.first_name%>">
+      <input type="text" name='last_name' value="<%= data.last_name%>">
+      <input type="text" name='email' value="<%= data.email%>">
+      <input type="hidden" name='emailOri' value="<%= data.email%>">
 
-  <form action="/students/edit/<%= data.id%>" method="post">
-    <input type="text" name='first_name' value="<%= data.first_name%>">
-    <input type="text" name='last_name' value="<%= data.last_name%>">
-    <input type="text" name='email' value="<%= data.email%>">
-    <input type="hidden" name='emailOri' value="<%= data.email%>">
-
-    <% if(errs != ''){%>
-      <span><%= errs%></span>
-    <%}%>
-    <button type="submit">Submit</button>
-  </form>
+      <% if(errs != ''){%>
+        <span><%= errs%></span>
+      <%}%>
+      <button class='button_3' type="submit">Submit</button>
+    </form>
+  </body>
+</html>

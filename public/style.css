@@ -1,0 +1,101 @@
+body{
+  box-sizing: border-box;
+}
+
+h2{
+  text-align: center;
+}
+
+td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+th{
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+
+tr:hover{
+  background-color:#f5f5f5
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 5px 0;
+    border: 1px solid gray;
+    box-sizing: border-box;
+}
+
+input[type=text]:focus {
+    border: 2px solid #2196F3;
+}
+
+
+.button_3 {
+  float: right;
+    background-color: #2196F3;
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button_3:hover {
+    background-color: #0b7dda;
+    color: white;
+    padding-left: 45px;
+}
+
+.button_2{
+  text-align: center;
+  background-color: white;
+  color: #0b7dda;
+  /*border: 1px solid #0b7dda;*/
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  transition: 0.75s;
+}
+
+.button_2:hover {
+    background-color: #0b7dda;
+    color: white;
+}
+
+.button_del{
+  text-align: center;
+  background-color: white;
+  color: #f44336;
+  /*border: 1px solid #0b7dda;*/
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  transition: 0.75s;
+}
+
+.button_del:hover {
+    background-color: #f44336;
+    color: white;
+}
