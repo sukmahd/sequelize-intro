@@ -1,0 +1,20 @@
+<a href="students/add">Add</a>
+<table border="1">
+  <tr>
+    <td>ID</td>
+    <td>First Name</td>
+    <td>Last Name</td>
+    <td>Email</td>
+    <td>Action</td>
+  </tr>
+<% data.forEach(row => { %>
+  <tr>
+    <td><%= row.id%></td>
+    <td><%= row.first_name%></td>
+    <td><%= row.last_name%></td>
+    <td><%= row.email%></td>
+    <td><a href="students/delete/<%= row.id%>">Delete</a>||
+    <a href="students/edit/<%= row.id%>">Edit</a></td>
+  </tr>
+<%})%>
+</table>
