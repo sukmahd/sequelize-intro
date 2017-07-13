@@ -11,5 +11,21 @@ router.get('/', function(req,res){
     })
 })
 
+router.get('/add', function(req, res){
+  res.render('teachersAdd');
+})
+
+router.post('/', function(req, res){
+  model.Teacher.create({
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    email: req.body.email,
+    createAt: new Date(),
+    updateAt: new Date()
+  })
+  .then(function(){
+    res.redirect('/teachers');
+  })
+})
 
 module.exports = router;

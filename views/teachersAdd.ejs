@@ -1,10 +1,6 @@
-<form action="/students" method="post">
+<form action="/teachers" method="post">
   <input type="text" name='first_name' placeholder="First Name">
   <input type="text" name='last_name' placeholder="Last Name">
   <input type="text" name='email' placeholder="Email">
-
-  <% if(errs != ''){%>
-    <span><%= errs%></span>
-  <%}%>
   <button type="submit">Submit</button>
 </form>
