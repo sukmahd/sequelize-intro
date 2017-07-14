@@ -130,6 +130,26 @@ router.post('/edit/:id', function(req, res){
 })
 })
 
+router.get('/addSubject/:id', function(req, res){
+  model.Students.findById(req.params.id)
+  .then(function(rows){
+    model.Subjects.findAll()
+    .then(function(rows_subject){
+      res.render('addStudentSubject', {data: rows, data2: rows_subject})
+    })
+  })
+})
+
+router.post('/addSubject/:id', function(req, res){
+  model.StudentSubjects.create({
+    StudentId: parseInt(req.params.id),
+    SubjectId: req.body.SubjectId
+  })
+  .then(function(){
+    res.redirect('/students')
+  })
+})
+
 // router.get('/find/:id', function(req, res){
 //   model.Students.findOne({
 //     where:{

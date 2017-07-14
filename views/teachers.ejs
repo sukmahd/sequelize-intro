@@ -5,6 +5,7 @@
     <td>First Name</td>
     <td>Last Name</td>
     <td>Email</td>
+    <td>Subject Name</td>
     <td>action</td>
   </tr>
 <% data.forEach(row => { %>
@@ -13,6 +14,7 @@
     <td><%= row.first_name%></td>
     <td><%= row.last_name%></td>
     <td><%= row.email%></td>
+    <td><%= row.subject_name%></td>
     <td><a href="/teachers/delete/<%= row.id%>">Delete</a>||
     <a href="/teachers/edit/<%= row.id%>">Edit</a></td>
   </tr>

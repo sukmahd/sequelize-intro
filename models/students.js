@@ -27,12 +27,10 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     jurusan: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
+  Students.associate = (models) =>{
+    Students.belongsToMany(models.Subjects, {through: 'StudentSubjects'})
+  }
+
   return Students;
 };

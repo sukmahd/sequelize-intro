@@ -22,6 +22,7 @@
         <td><%= row.last_name%></td>
         <td><%= row.email%></td>
         <td>
+          <a class="button_2" href="/students/addSubject/<%= row.id%>">Add Subject</a>
           <a class="button_2" href="/students/edit/<%= row.id%>">Edit</a>
           <a class="button_del" href="/students/delete/<%= row.id%>" onclick="return confirm('Are you sure want to delete this student?');">Delete</a>
         </td>
