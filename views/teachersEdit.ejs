@@ -12,11 +12,12 @@
       <input type="text" name='last_name' value="<%= data.last_name%>">
       <input type="text" name='email' value="<%= data.email%>">
       <select name="SubjectId">
-        <%if(data.Subject !== null){%>
-            <option  value="<%= data.SubjectId%>" selected><%= data.Subject.subject_name%></option>
-        <%}%>
         <% data_subject.forEach( cont => {%>
-          <option value="<%= cont.id%>"><%= cont.subject_name%></option>
+        <%  var selected%>
+          <%if(cont.id == data.SubjectId){%>
+            <%selected = 'selected'%>
+          <%}%>
+          <option value="<%= cont.id%>" <%=selected%>><%= cont.subject_name%></option>
         <%})%>
       </select>
       <button class='button_3' type="submit">Submit</button>
