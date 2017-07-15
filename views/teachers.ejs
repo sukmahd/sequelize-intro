@@ -29,7 +29,7 @@
               <td><%= row.last_name%></td>
               <td><%= row.email%></td>
               <td><%= row.subject_name%></td>
-              <td><a href="/teachers/delete/<%= row.id%>">Delete</a>||
+              <td><a href="/teachers/delete/<%= row.id%>" onclick="return confirm('Are you sure want to delete this student?');">Delete</a>||
               <a href="/teachers/edit/<%= row.id%>">Edit</a></td>
             </tr>
           <%})%>

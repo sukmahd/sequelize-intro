@@ -9,20 +9,17 @@ const bodyParser = require('body-parser');
 const teachers = require('./routers/teachers');
 const subjects = require('./routers/subjects');
 const students = require('./routers/students');
-
+const index = require('./routers/index');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');
 
-app.get('/', function(req, res){
-  res.send('hai');
-})
-
-
+app.use('/', index)
 app.use('/teachers', teachers)
 app.use('/subjects', subjects)
+app.use('/subjects/add', subjects)
 app.use('/subjects/enroll/:id', subjects)
 app.use('/subjects/givescore/:id/:ids', subjects)
 app.use('/students', students)
