@@ -1,19 +1,39 @@
-<table border="1">
-  <tr>
-    <td>Subject Name</td>
-    <td>Teacher Name</td>
-    <td>Action</td>
-  </tr>
-<% data.forEach(row => { %>
-  <tr>
-    <td ><%= row.subject_name%></td>
 
-    <td>
-      <% row.first_name.forEach(name =>{%>
-        <%= name%><br>
-      <% })%>
-      </td>
-    <td><a href="/subjects/enroll/<%= row.id%>">Enrolled Student</a></td>
-  </tr>
-<%})%>
-</table>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="col-md-6 col-md-offset-3">
+      <h2 class="text-center">Enroll Subjects</h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Subject Name</th>
+            <th>Teacher Name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach(row => { %>
+            <tr>
+              <td ><%= row.subject_name%></td>
+
+              <td>
+                <ol>
+                <% row.first_name.forEach(name =>{%>
+                  <li><%= name%></li>
+                <% })%>
+              </ol>
+                </td>
+              <td><a href="/subjects/enroll/<%= row.id%>">Enrolled Student</a></td>
+            </tr>
+          <%})%>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

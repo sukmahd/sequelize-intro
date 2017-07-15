@@ -65,6 +65,23 @@ router.get('/givescore/:id/:ids', function(req, res){
   })
 })
 
+router.post('/givescore/:id/:ids', function(req, res){
+  model.StudentSubjects.update({
+    score: req.body.score,
+    updateAt: new Date()
+  },{
+    where:{
+      StudentId: req.params.id,
+      $and: {
+        SubjectId: req.params.ids
+      }
+    }
+  })
+  .then(function(){
+    res.redirect(`subject/enroll/${req.params.ids}`)
+  })
+})
+
 // no 7 example
 // model.Subject.findOne()
 // .then(function(subject){
