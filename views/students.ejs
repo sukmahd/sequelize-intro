@@ -3,33 +3,41 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
-    <h2>STUDENTS TABLE</h2>
-    <table>
-      <tr>
-        <th>ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Action</th>
-      </tr>
-    <% data.forEach(row => { %>
-      <tr>
-        <td><%= row.id%></td>
-        <td><%= row.first_name%></td>
-        <td><%= row.last_name%></td>
-        <td><%= row.email%></td>
-        <td>
-          <a class="button_2" href="/students/addSubject/<%= row.id%>">Add Subject</a>
-          <a class="button_2" href="/students/edit/<%= row.id%>">Edit</a>
-          <a class="button_del" href="/students/delete/<%= row.id%>" onclick="return confirm('Are you sure want to delete this student?');">Delete</a>
-        </td>
-      </tr>
-    <%})%>
-    </table>
-    <a class="button_3" href="students/add">Add</a>
+    <div class="col-md-8 col-md-offset-2">
+      <h2 class="text-center">STUDENTS TABLE</h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Action</th>
+            <th>Option</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% var no = 1%>
+          <% data.forEach(row => { %>
+            <tr>
+              <td><%= no++%></td>
+              <td><%= row.first_name%></td>
+              <td><%= row.last_name%></td>
+              <td><%= row.email%></td>
+              <td><a class="button_2" href="/students/addSubject/<%= row.id%>"><button type="button" class="btn btn-info">Add Subject</button></a></td>
+              <td>
+                <a class="button_2" href="/students/edit/<%= row.id%>"><button type="button" class="btn btn-primary">Edit</button></a>
+                <a href="/students/delete/<%= row.id%>" onclick="return confirm('Are you sure want to delete this student?');"><button type="button" class="btn btn-danger">Delete</button></a>
+              </td>
+            </tr>
+          <%})%>
+        </tbody>
+      </table>
+      <a class="button_3" href="students/add"><button type="button" class="btn btn-success">Add</button></a>
+    </div>
   </body>
 
 </html>

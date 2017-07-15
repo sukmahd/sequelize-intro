@@ -5,7 +5,9 @@ const router = express.Router();
 const model = require('../models');
 
 router.get('/', function(req,res){
-  model.Teacher.findAll()
+  model.Teacher.findAll({
+    order:[['first_name']]
+  })
   .then(function(rowsTeacher){
     let promises = rowsTeacher.map(teacher =>{
       return new Promise(function(resolve, reject){

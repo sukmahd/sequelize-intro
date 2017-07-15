@@ -5,7 +5,9 @@ const router = express.Router();
 const model = require('../models');
 
 router.get('/', function(req,res){
-  model.Students.findAll()
+  model.Students.findAll({
+    order:[['first_name']]
+  })
   .then(function(rows){
     res.render('students', {data:rows})
     })

@@ -1,22 +1,40 @@
-<a href="teachers/add">add</a>
-<table border="1">
-  <tr>
-    <td>ID</td>
-    <td>First Name</td>
-    <td>Last Name</td>
-    <td>Email</td>
-    <td>Subject Name</td>
-    <td>action</td>
-  </tr>
-<% data.forEach(row => { %>
-  <tr>
-    <td><%= row.id%></td>
-    <td><%= row.first_name%></td>
-    <td><%= row.last_name%></td>
-    <td><%= row.email%></td>
-    <td><%= row.subject_name%></td>
-    <td><a href="/teachers/delete/<%= row.id%>">Delete</a>||
-    <a href="/teachers/edit/<%= row.id%>">Edit</a></td>
-  </tr>
-<%})%>
-</table>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="col-md-8 col-md-offset-2">
+      <h2 class="text-center">All Teachers Data</h2>
+      <h4 class="text-center"><a href="teachers/add">Add Teacher Data</a></h4>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <td>No</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Email</td>
+            <td>Subject Name</td>
+            <td>action</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% var no = 1%>
+          <% data.forEach(row => { %>
+            <tr>
+              <td><%= no++%></td>
+              <td><%= row.first_name%></td>
+              <td><%= row.last_name%></td>
+              <td><%= row.email%></td>
+              <td><%= row.subject_name%></td>
+              <td><a href="/teachers/delete/<%= row.id%>">Delete</a>||
+              <a href="/teachers/edit/<%= row.id%>">Edit</a></td>
+            </tr>
+          <%})%>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
