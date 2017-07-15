@@ -42,8 +42,7 @@ router.get('/enroll/:id', function(req, res){
   model.StudentSubjects.findAll({
     where: {
       SubjectId: req.params.id
-    }
-  }, {
+    },
     include:[{all:true}]
   })
   .then(function(rows){
@@ -51,6 +50,20 @@ router.get('/enroll/:id', function(req, res){
   })
 })
 
+router.get('/givescore/:id/:ids', function(req, res){
+  model.StudentSubjects.findAll({
+    where: {
+      StudentId: req.params.id,
+      $and: {
+        SubjectId: req.params.ids
+      }
+    },
+    include:[{all:true}]
+  })
+  .then(function(row){
+    res.render('givescore', {data:row[0]})
+  })
+})
 
 // no 7 example
 // model.Subject.findOne()

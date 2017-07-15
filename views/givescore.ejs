@@ -1,0 +1,21 @@
+<%= JSON.stringify(data)%>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form action="/students" method="post">
+      <input type="text" name='first_name' placeholder="First Name">
+      <input type="text" name='last_name' placeholder="Last Name">
+      <input type="text" name='email' placeholder="Email">
+
+      <% if(errs != ''){%>
+        <span><%= errs%></span>
+      <%}%>
+      <button class='button_3' type="submit">Submit</button>
+    </form>
+  </body>
+</html>

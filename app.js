@@ -24,9 +24,11 @@ app.get('/', function(req, res){
 app.use('/teachers', teachers)
 app.use('/subjects', subjects)
 app.use('/subjects/enroll/:id', subjects)
+app.use('/subjects/givescore/:id/:ids', subjects)
 app.use('/students', students)
 app.use('/students/add', students)
 app.use('/students/delete/:id', students)
 app.use('/students/edit/:id', students)
+
 
 app.listen(3000);
