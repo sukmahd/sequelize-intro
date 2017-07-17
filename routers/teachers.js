@@ -34,7 +34,7 @@ router.get('/', function(req,res){
     })
     Promise.all(promises)
     .then(function(teacher){
-      res.render('teachers',{data:teacher, title: 'list Teachers', role: req.session.role})
+      res.render('teachers',{data:teacher, title: 'list Teachers', role: req.session.user.role})
     })
   })
 

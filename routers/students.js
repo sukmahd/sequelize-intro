@@ -6,7 +6,6 @@ const model = require('../models');
 
 
 router.use((req,res, next)=>{
-  console.log(req.session.user.role);
   if(req.session.user.role == 'academic' || req.session.user.role == 'headmaster' || req.session.user.role == 'teacher'){
     next();
   }else{
@@ -19,7 +18,7 @@ router.get('/', function(req,res){
     order:[['first_name']]
   })
   .then(function(rows){
-    res.render('students', {data:rows, title:'List Students', role: req.session.role})
+    res.render('students', {data:rows, title:'List Students', role: req.session.user.role})
     })
 })
 

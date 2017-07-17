@@ -34,7 +34,7 @@ router.get('/', function(req,res){
     })
     Promise.all(promises)
     .then(function(subject){
-      res.render('subjects', {data:subject, title: 'list Subject', role: req.session.role})
+      res.render('subjects', {data:subject, title: 'list Subject', role: req.session.user.role})
     })
   })
   })

@@ -9,7 +9,11 @@ router.get('/', function(req, res){
 })
 
 router.get('/login', function(req,res){
-  res.render('login', {title: 'login', msg: ''})
+  if(req.session.user){
+    res.redirect('/')
+  }else {
+    res.render('login', {title: 'login', msg: ''})
+  }
 })
 
 router.post('/login', function(req,res){
