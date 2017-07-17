@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/sukmahd/sequelize-intro#readme",
   "dependencies": {
+    "express-session": "^1.15.3",
     "pg": "^6.4.0",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.3.1"

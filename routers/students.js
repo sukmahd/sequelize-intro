@@ -4,6 +4,16 @@ const express = require('express');
 const router = express.Router();
 const model = require('../models');
 
+
+router.use((req,res, next)=>{
+  console.log(req.session.user.role);
+  if(req.session.user.role == 'academic' || req.session.user.role == 'headmaster' || req.session.user.role == 'teacher'){
+    next();
+  }else{
+    res.sendStatus(403);
+  }
+})
+
 router.get('/', function(req,res){
   model.Students.findAll({
     order:[['first_name']]

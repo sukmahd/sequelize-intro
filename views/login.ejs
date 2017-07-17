@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%- include layouts/header%>
+  </head>
+  <body>
+    <div class="col-md-4 col-md-offset-4">
+        <h2 class="text-center">Login</h2>
+      <form class="form-horizontal" action="/login" method="post">
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Username</label>
+          <div class="col-sm-9">
+              <input type="text" class="form-control" name='username' placeholder="Username">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Passoword</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" name='password' placeholder="Password">
+          </div>
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </body>
+</html>

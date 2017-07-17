@@ -2,10 +2,52 @@
 
 const express = require('express');
 const router = express.Router();
-
+const model = require('../models');
 
 router.get('/', function(req, res){
   res.render('index', {title: 'Home'})
+})
+
+router.get('/login', function(req,res){
+  res.render('login', {title: 'login'})
+})
+
+router.post('/login', function(req,res){
+  if(!req.body.username || !req.body.password)
+  {
+    res.send('please enter username and password')
+  }
+  else
+  {
+    model.User.findOne({
+      where: {
+        username:req.body.username
+      }
+    })
+    .then(function(row){
+      if(row.password == req.body.password)
+      {
+          req.session.user = {
+            username: req.body.username,
+            role: row.role
+          }
+          console.log(req.session.user.role);
+          res.redirect('students')
+      }else
+      {
+          res.send('password salah')
+      }
+    })
+    .catch(function(err){
+      res.send('user not found')
+    })
+  }
+})
+
+router.get('/logout', function(req,res){
+  req.session.destroy( err => {
+    res.redirect('/');
+  })
 })
 
 

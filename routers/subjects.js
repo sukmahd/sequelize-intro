@@ -5,6 +5,14 @@ const router = express.Router();
 const model = require('../models');
 const giveLetter = require('../helpers/score')
 
+router.use((req,res, next)=>{
+  if(req.session.user.role == 'academic' || req.session.user.role == 'headmaster'){
+    next();
+  }else{
+    res.sendStatus(403);
+  }
+})
+
 
 router.get('/', function(req,res){
   model.Subjects.findAll()

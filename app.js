@@ -5,6 +5,7 @@ const app = express();
 const model = require('./models');
 const path = require('path');
 const bodyParser = require('body-parser');
+const session = require('express-session')
 // var Sequelize = require('sequelize');
 // var sequelize = new Sequelize('tugaskamis', 'postgres', 'posting', {dialect: 'postgres'});
 
@@ -19,6 +20,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');
 
+app.use(session({
+  secret: 'hacktiv',
+  resave: false,
+  saveUnitialized: true,
+  cookie: {}
+}))
 
 
 //d router
@@ -66,16 +73,28 @@ app.set('view engine','ejs');
 
 
 app.use('/', index)
+
+app.use((req,res, next)=>{
+  if(req.session.user){
+    next();
+  }else{
+    res.sendStatus(403);
+  }
+})
+
+
+
+
 app.use('/teachers', teachers)
-app.use('/teachers/test', teachers)
+// app.use('/teachers/test', teachers)
 app.use('/subjects', subjects)
-app.use('/subjects/add', subjects)
-app.use('/subjects/enroll/:id', subjects)
-app.use('/subjects/givescore/:id/:ids', subjects)
+// app.use('/subjects/add', subjects)
+// app.use('/subjects/enroll/:id', subjects)
+// app.use('/subjects/givescore/:id/:ids', subjects)
 app.use('/students', students)
-app.use('/students/add', students)
-app.use('/students/delete/:id', students)
-app.use('/students/edit/:id', students)
+// app.use('/students/add', students)
+// app.use('/students/delete/:id', students)
+// app.use('/students/edit/:id', students)
 
 
 // app.get('/test', function(req, res){
