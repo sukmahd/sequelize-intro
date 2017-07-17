@@ -9,12 +9,12 @@ router.get('/', function(req,res){
     order:[['first_name']]
   })
   .then(function(rows){
-    res.render('students', {data:rows})
+    res.render('students', {data:rows, title:'List Students'})
     })
 })
 
 router.get('/add', function(req,res){
-  res.render('studentsAdd', {errs: ''})
+  res.render('studentsAdd', {errs: '', title:'Add Students'})
 })
 
 // router.post('/', function(req, res){
@@ -45,7 +45,7 @@ router.get('/delete/:id', function(req, res){
 router.get('/edit/:id', function(req, res){
   model.Students.findById(req.params.id)
   .then(function(rows){
-    res.render('studentsEdit',{data:rows, errs: ''})
+    res.render('studentsEdit',{data:rows, errs: '', title:'Edit Students'})
   })
 })
 
@@ -91,10 +91,10 @@ router.post('/', function(req, res){
         res.redirect('/students')
       })
       .catch(function(err){
-        res.render('studentsAdd', {errs: err.message});
+        res.render('studentsAdd', {errs: err.message, title:'Add Students'});
       })
     }else {
-      res.render('studentsAdd', {errs: 'Email sudah di pakai'});
+      res.render('studentsAdd', {errs: 'Email sudah di pakai', title:'Add Students'});
     }
   })
 })
@@ -123,7 +123,7 @@ router.post('/edit/:id', function(req, res){
     .catch(function(err){
       model.Students.findById(req.params.id)
       .then(function(rows){
-        res.render('studentsEdit',{data:rows, errs: err})
+        res.render('studentsEdit',{data:rows, errs: err, title:'Edit Students'})
       })
     })
   }else{
@@ -137,7 +137,7 @@ router.get('/addSubject/:id', function(req, res){
   .then(function(rows){
     model.Subjects.findAll()
     .then(function(rows_subject){
-      res.render('addStudentSubject', {data: rows, data2: rows_subject})
+      res.render('addStudentSubject', {data: rows, data2: rows_subject, title:'Add Subject Students'})
     })
   })
 })

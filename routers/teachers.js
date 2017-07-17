@@ -25,7 +25,7 @@ router.get('/', function(req,res){
     })
     Promise.all(promises)
     .then(function(teacher){
-      res.render('teachers',{data:teacher})
+      res.render('teachers',{data:teacher, title: 'list Teachers'})
     })
   })
 
@@ -38,7 +38,7 @@ router.get('/', function(req,res){
 router.get('/add', function(req, res){
   model.Subjects.findAll()
   .then(function(rows){
-    res.render('teachersAdd', {data: rows});
+    res.render('teachersAdd', {data: rows, title: 'Add Teachers'});
   })
 })
 
@@ -74,7 +74,7 @@ router.get('/edit/:id', function(req, res){
   .then(function(row){
     model.Subjects.findAll()
     .then(function(rows){
-      res.render('teachersEdit', { data:row, data_subject: rows})
+      res.render('teachersEdit', { data:row, data_subject: rows, title: 'Edit Teachers'})
     })
   })
 })
@@ -95,5 +95,8 @@ router.post('/edit/:id', function(req, res){
     res.redirect('/teachers')
   })
 })
+
+//test
+
 
 module.exports = router;

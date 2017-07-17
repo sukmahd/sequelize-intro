@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <%-include layouts/header %>
   </head>
   <body>
+    <%- include layouts/menu-bar%>
     <div class="col-md-8 col-md-offset-2">
       <h2 class="text-center">STUDENTS TABLE</h2>
       <table class="table table-hover">
@@ -36,7 +36,7 @@
           <%})%>
         </tbody>
       </table>
-      <a class="button_3" href="students/add"><button type="button" class="btn btn-success">Add</button></a>
+      <a href="students/add"><button type="button" class="btn btn-success">Add</button></a>
     </div>
   </body>
 

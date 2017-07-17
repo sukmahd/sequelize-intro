@@ -8,5 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     Subjects.hasMany(models.Teacher)
     Subjects.belongsToMany(models.Students, {through: 'StudentSubjects'})
   }
+
+
   return Subjects;
 };

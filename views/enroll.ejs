@@ -3,8 +3,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <%-include layouts/header %>
   </head>
   <body>
     <div class="col-md-6 col-md-offset-3">
@@ -15,9 +14,11 @@
           <tr>
             <th>Name</th>
             <th>Score</th>
+            <th>Letter Score</th>
           </tr>
         </thead>
         <tbody>
+          <% let i = 0%>
           <%data.forEach(dat =>{%>
             <tr>
               <td><%= dat.Student.first_name + ' ' + dat.Student.last_name%></td>
@@ -26,6 +27,8 @@
               <%}else{%>
                 <td><%=dat.score%></td>
               <%}%>
+              <td><%= scoreLetter[i]%></td>
+              <% i++%>
             </tr>
           <%})%>
         </tbody>

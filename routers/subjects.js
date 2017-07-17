@@ -3,6 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const model = require('../models');
+const giveLetter = require('../helpers/score')
 
 
 router.get('/', function(req,res){
@@ -25,7 +26,7 @@ router.get('/', function(req,res){
     })
     Promise.all(promises)
     .then(function(subject){
-      res.render('subjects', {data:subject})
+      res.render('subjects', {data:subject, title: 'list Subject'})
     })
   })
   })
@@ -40,7 +41,7 @@ router.get('/', function(req,res){
   // })
 
   router.get('/add', function(req,res){
-    res.render('subjectsAdd')
+    res.render('subjectsAdd', {title: 'Add Subject'})
   })
 
 router.post('/add', function(req,res){
@@ -73,7 +74,8 @@ router.get('/enroll/:id', function(req, res){
     include:[{all:true}]
   })
   .then(function(rows){
-      res.render('enroll', {data:rows})
+      let letter = giveLetter(rows);
+      res.render('enroll', {data:rows, title: 'Enroll Subject', scoreLetter: letter})
   })
 })
 
@@ -88,7 +90,7 @@ router.get('/givescore/:id/:ids', function(req, res){
     include:[{all:true}]
   })
   .then(function(row){
-    res.render('givescore', {data:row[0]})
+    res.render('givescore', {data:row[0], title: 'Give Score'})
   })
 })
 
