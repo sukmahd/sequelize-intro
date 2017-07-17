@@ -9,7 +9,7 @@ router.use((req,res, next)=>{
   if(req.session.user.role == 'headmaster'){
     next();
   }else{
-    res.sendStatus(403);
+    res.send('anda harus login sebagai headmaster');
   }
 })
 
@@ -34,7 +34,7 @@ router.get('/', function(req,res){
     })
     Promise.all(promises)
     .then(function(teacher){
-      res.render('teachers',{data:teacher, title: 'list Teachers'})
+      res.render('teachers',{data:teacher, title: 'list Teachers', role: req.session.role})
     })
   })
 

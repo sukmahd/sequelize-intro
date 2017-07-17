@@ -18,6 +18,9 @@
           <label class="col-sm-3 control-label">Passoword</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" name='password' placeholder="Password">
+            <%if(msg != ''){%>
+              <span><%= msg %></span>
+            <%}%>
           </div>
         </div>
         <button type="submit">Login</button>

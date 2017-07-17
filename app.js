@@ -78,7 +78,7 @@ app.use((req,res, next)=>{
   if(req.session.user){
     next();
   }else{
-    res.sendStatus(403);
+    res.render('login', {title:'login', msg: 'anda harus login'});
   }
 })
 

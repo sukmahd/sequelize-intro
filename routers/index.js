@@ -5,11 +5,11 @@ const router = express.Router();
 const model = require('../models');
 
 router.get('/', function(req, res){
-  res.render('index', {title: 'Home'})
+  res.render('index', {title: 'Home', role: ''})
 })
 
 router.get('/login', function(req,res){
-  res.render('login', {title: 'login'})
+  res.render('login', {title: 'login', msg: ''})
 })
 
 router.post('/login', function(req,res){
@@ -31,8 +31,14 @@ router.post('/login', function(req,res){
             username: req.body.username,
             role: row.role
           }
-          console.log(req.session.user.role);
-          res.redirect('students')
+          if(row.role == 'teacher'){
+            res.redirect('students')
+          }else if (row.role == 'academic') {
+            res.redirect('subjects')
+          }else {
+            res.redirect('teachers')
+          }
+
       }else
       {
           res.send('password salah')

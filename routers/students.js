@@ -10,7 +10,7 @@ router.use((req,res, next)=>{
   if(req.session.user.role == 'academic' || req.session.user.role == 'headmaster' || req.session.user.role == 'teacher'){
     next();
   }else{
-    res.sendStatus(403);
+    res.send('harus login sebagai academic or headmaster or teacher');
   }
 })
 
@@ -19,7 +19,7 @@ router.get('/', function(req,res){
     order:[['first_name']]
   })
   .then(function(rows){
-    res.render('students', {data:rows, title:'List Students'})
+    res.render('students', {data:rows, title:'List Students', role: req.session.role})
     })
 })
 

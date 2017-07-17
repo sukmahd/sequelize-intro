@@ -9,7 +9,7 @@ router.use((req,res, next)=>{
   if(req.session.user.role == 'academic' || req.session.user.role == 'headmaster'){
     next();
   }else{
-    res.sendStatus(403);
+    res.send('harus login sebagai academic or headmaster');
   }
 })
 
@@ -34,7 +34,7 @@ router.get('/', function(req,res){
     })
     Promise.all(promises)
     .then(function(subject){
-      res.render('subjects', {data:subject, title: 'list Subject'})
+      res.render('subjects', {data:subject, title: 'list Subject', role: req.session.role})
     })
   })
   })
