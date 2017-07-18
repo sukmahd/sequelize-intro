@@ -8,6 +8,22 @@ router.get('/', function(req, res){
   res.render('index', {title: 'Home', role: ''})
 })
 
+
+router.get('/signup', function(req,res){
+  res.render('signup', {title: 'Signup', msg: ''})
+})
+
+router.post('/signup', function(req,res){
+  model.User.create({
+    username: req.body.username,
+    password: req.body.password,
+    role: req.body.role
+  })
+  .then(function(){
+    res.redirect('/login')
+  })
+})
+
 router.get('/login', function(req,res){
   if(req.session.user){
     res.redirect('/')

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%- include layouts/header%>
+  </head>
+  <body>
+    <div class="col-md-4 col-md-offset-4">
+        <h2 class="text-center">Signup</h2>
+      <form class="form-horizontal" action="/signup" method="post">
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Username</label>
+          <div class="col-sm-9">
+              <input type="text" class="form-control" name='username' placeholder="Username">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Password</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" name='password' placeholder="Password">
+            <%if(msg != ''){%>
+              <span><%= msg %></span>
+            <%}%>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Role</label>
+          <div class="col-sm-9">
+            <select name="role">
+                <option value="teacher">Teacher</option>
+                <option value="academic">Academic</option>
+                <option value="headmaster">Headmaster</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit">Daftar</button>
+      </form>
+    </div>
+  </body>
+</html>

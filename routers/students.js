@@ -47,7 +47,12 @@ router.get('/delete/:id', function(req, res){
     id: parseInt(req.params.id)
   }})
   .then(function(){
-    res.redirect('/students');
+    model.StudentSubjects.destroy({where:{
+      StudentId: parseInt(req.params.id)
+    }})
+    .then(function(){
+      res.redirect('/students');
+    })
   })
 })
 
