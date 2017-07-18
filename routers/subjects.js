@@ -115,7 +115,7 @@ router.post('/givescore/:id/:ids', function(req, res){
     }
   })
   .then(function(){
-    res.redirect(`subject/enroll/${req.params.ids}`)
+    res.redirect(`/subjects/enroll/${req.params.ids}`)
   })
 })
 
