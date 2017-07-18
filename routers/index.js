@@ -3,6 +3,8 @@
 const express = require('express');
 const router = express.Router();
 const model = require('../models');
+const crypto = require('crypto');
+const hash = require('../helpers/hash')
 
 router.get('/', function(req, res){
   res.render('index', {title: 'Home', role: ''})
@@ -45,23 +47,17 @@ router.post('/login', function(req,res){
       }
     })
     .then(function(row){
-      if(row.password == req.body.password)
-      {
-          req.session.user = {
-            username: req.body.username,
-            role: row.role
-          }
-          if(row.role == 'teacher'){
-            res.redirect('students')
-          }else if (row.role == 'academic') {
-            res.redirect('subjects')
-          }else {
-            res.redirect('teachers')
-          }
-
-      }else
-      {
-          res.send('password salah')
+      //hash
+      const secret = row.salt;
+      const hashData = hash(secret, req.body.password);
+      if(hashData == row.password){
+        req.session.user = {
+          username: row.username,
+          role: row.role
+        }
+        res.redirect('/students')
+      }else {
+        res.render('login', {title:'login', msg: 'Password Anda Salah'})
       }
     })
     .catch(function(err){

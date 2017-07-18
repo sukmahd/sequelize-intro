@@ -1,7 +1,7 @@
 'use strict';
 
 const generate = require('../helpers/generateSalt');
-const crypto = require('crypto');
+const hash = require('../helpers/hash');
 
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {
@@ -13,10 +13,8 @@ module.exports = function(sequelize, DataTypes) {
     hooks: {
       beforeCreate: (models) =>{
         const secret = generate();
-        const hash = crypto.createHmac('sha256', secret)
-                           .update(models.password)
-                           .digest('hex');
-        models.password = hash;
+        const hashData = hash(secret, models.password);
+        models.password = hashData;
         models.salt = secret;
       }
     }
